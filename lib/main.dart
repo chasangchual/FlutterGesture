@@ -24,9 +24,20 @@ class MyApp extends StatelessWidget {
         body: const Home(),
       ),
       initialBinding: AppBinding(),
+      theme: myTheme,
     );
   }
 }
+
+final myTheme = ThemeData(
+    useMaterial3: true,
+    // colorScheme: const ColorScheme.light(primary: Colors.indigo, secondary: Colors.green, tertiary: Colors.yellow),
+    // colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+    colorScheme: const ColorScheme.light(),
+    appBarTheme: AppBarTheme(
+        backgroundColor: Colors.indigo.shade200,
+        titleTextStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black87)),
+    textTheme: const TextTheme(bodyMedium: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5)));
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -45,6 +56,7 @@ class MyCheckBoxes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var textTheme = context.textTheme;
     return Obx(() => Row(
           children: [
             Checkbox(value: CheckboxState.to.getState(0), onChanged: (value) => change(0, selected: value)),
@@ -156,6 +168,7 @@ class MySwitch extends StatelessWidget {
 
 class MyPopupMenu extends StatelessWidget {
   const MyPopupMenu({super.key});
+
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
